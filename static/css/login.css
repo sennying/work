@@ -1,0 +1,139 @@
+* {
+    padding: 0;
+    margin: 0;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+body{
+	background: url(../images/img09.jpg) no-repeat;
+	background-size: 100% 100%;
+	height: 1080px;
+}
+ul,
+li {
+    list-style-type: none;
+}
+
+a:hover {
+    color: #0dbba1;
+}
+
+.blank20 {
+    height: 20px;
+}
+
+.clear {
+    clear: both;
+}
+
+.clearfix {
+    display: block;
+}
+
+.mainbox {
+    width: 1180px;
+    margin: auto;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.login .title {
+    height: 62px;
+    line-height: 62px;
+    font-size: 22px;
+    padding-left: 120px;
+    margin-left: 300px;
+    color: #000000;
+    font-weight:bolder;
+}
+
+.login .l_m {
+    width: 398px;
+    float: left;
+    border: 1px solid #eee;
+    padding: 20px 20px 40px 20px;
+    margin-left: 350px;
+    min-height: 387px;
+    background: #fff;
+}
+
+.login .l_m .login_box {
+    margin: 40px 20px 0px 20px;
+}
+
+.login .l_m .login_box .username {
+    background-position: 10px 11px;
+}
+
+.login .l_m .login_box .username,
+.login .l_m .login_box .password{
+    padding: 0px 10px 0px 40px;
+    width: 307px;
+    vertical-align: middle;
+    height: 42px;
+    border: 0;
+    outline: none;
+    font-size: 14px;
+    color: #999;
+    letter-spacing: 1px;
+    border: #ddd solid 1px;
+    border-radius: 0px;
+}
+.login .l_m .login_box .cook{
+    color: #666;
+    height: 34px;
+    line-height: 34px;
+    font-size: 14px;
+}
+
+.login .l_m .login_box .cook #Cookies {
+    -webkit-appearance:none;
+    width: 19px;
+    height: 19px;
+    background: url(../images/radio_19.png) no-repeat 0px -21px;
+    margin: 8px 5px 0px 0px;
+    float: left;
+    cursor: pointer;
+    outline: none;
+}
+.login .l_m .login_box .cook #Cookies:checked{
+    background: url(../images/radio_19.png) no-repeat;
+}
+
+.btn-login{
+    display: block;
+    width: 358px;
+    height: 46px;
+    -webkit-transition:0.3s;
+    transition: 0.3s;
+    line-height: 46px;
+    cursor: pointer;
+    background: #98FB98;
+    border: 0px;
+    color:orangered; 	
+    font-size: 18px;
+    text-align: center;
+    border-radius: 50px;
+}
+
+
+.footer-bottom{
+    padding: 15px 0 30px;
+    margin-top: 30px;
+    background: #98FB98;
+    text-align: center;
+    line-height: 30px;
+    color: red;
+}
+.footer{
+    width:100%;
+    background: #98FB98;
+    bottom:10px;
+}

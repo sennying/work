@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>菜单 </title>
+    <link rel="stylesheet" type="text/css" href="/../static/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="/../static/css/waimai.css" />
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+
+    <div class="head">师大食堂外卖
+        <ul class="fr">
+            <li>
+                <a href="/index">首页</a>
+            </li>
+            <li>
+                <a href="/joinin">我要入驻</a>
+            </li>
+            <li>
+                <a href="/waimai">点外卖</a>
+            </li>
+            <li>
+                <a href="/rider">我要送餐</a>
+            </li>
+            <li><a href="/userlogin">登录</a></li>
+        </ul>
+    </div>
+    <!-- <input type="hidden" id="kid"> -->
+    <div id="logo">
+        <!-- <img src="../static/images/img11.jpg" alt=""> -->
+        <!-- <div class="fl" id="headLogo" style="background-image: url(../sellerimg/重庆小面/logo.jpg)"></div>
+        <p class="headtext">重庆小面</p> -->
+    </div>
+    <ul class="menu">
+        <!-- <li class="fl">
+            <div class="cooklogo" style="background-image: url(../sellerimg/重庆小面/menu/menu01.jpg)"></div>
+            <p class="cookname">牛肉面</p>
+            <p class="fl price">￥10</p>
+            <p class="get fr">+</p>
+        </li>
+        <li class="fl"></li>
+        <li class="fl"></li>
+        <li class="fl"></li>
+        <li class="fl"></li> -->
+    </ul>
+
+    <div class=""></div>
+    <script src="/static/js/jquery.js"></script>
+    <script>
+        function init() {
+            var id = location.search.replace('?kid=', "");
+            // $("#kid").val(id)
+            $.get('/api/seller/id', {
+                id: id
+            }, function(resp) {
+                // console.log(resp.data)
+                var html = '';
+                html += '<div class="fl" id="headLogo" style="background-image: url(' + resp.data.logo + ')"></div><p class="headtext">' + resp.data.name + '</p>'
+                    // document.getElementsByClassName("logo")[0].innerHTML = html;
+                document.getElementById("logo").innerHTML = html;
+            })
+            $.get('/api/menu/Belongid', {
+                Belongid: id
+            }, function(resp) {
+                if (resp.code == 200) {
+                    var html = "";
+                    for (var i = 0; i < resp.data.length; i++) {
+                        var t = '<li class="fl"><div class="cooklogo" style="background-image: url(';
+                        t += resp.data[i].logo + ')"></div><p class="cookname">' + resp.data[i].sellname + '</p><p class="fl price">￥' + resp.data[i].price + '</p><p class="get fr">+</p></li>'
+                        html += t;
+                    }
+                    document.getElementsByClassName("menu")[0].innerHTML = html;
+                } else {
+                    alert(resp.msg)
+                }
+            })
+        }
+        init();
+    </script>
+</body>
+
+</html>

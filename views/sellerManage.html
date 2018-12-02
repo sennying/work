@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>菜单 </title>
+    <link rel="stylesheet" type="text/css" href="../static/css/common.css" />
+    <!-- <link rel="stylesheet" type="text/css" href="static/css/waimai.css" /> -->
+    <link rel="stylesheet" type="text/css" href="../static/css/sellerManage.css">
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+
+    <div class="head">师大食堂外卖商店管理
+        <!-- <ul class="fr">
+            <li>
+                <a href="/index">首页</a>
+            </li>
+            <li>
+                <a href="/joinin">我要入驻</a>
+            </li>
+            <li>
+                <a href="/waimai">点外卖</a>
+            </li>
+            <li>
+                <a href="/rider">我要送餐</a>
+            </li>
+            <li><a href="/userlogin">登录</a></li>
+        </ul> -->
+    </div>
+    <!-- <input type="hidden" id="kid"> -->
+    <div id="logo">
+        <!-- <img src="/static/images/img11.jpg" alt="">
+        <div class="fl" id="headLogo" style="background-image: url(../sellerimg/重庆小面/logo.jpg)"></div>
+        <p class="headtext">重庆小面</p> -->
+    </div>
+    <ul class="menu">
+        <!-- <li>
+            <div class="cooklogo fl" style="background-image: url(../sellerimg/重庆小面/menu/menu01.jpg)"></div>菜名：
+            <input type="text" class="cookname" value="牛肉面"><br> 价格：
+            <input type="number" class="price" value="10">元
+            <p> <a href="">修改</a></p>
+            <p><a href="">删除</a></p>
+        </li> -->
+    </ul>
+    <div style="clear: both;"></div>
+    <div class="add">
+        <button>添加菜品</buttton>
+    </div>
+    <script src="../static/js/jquery.js"></script>
+    <script>
+        function init() {
+            var id = location.search.replace('?kid=', "");
+            // $("#kid").val(id)
+            $.get('/api/seller/id', {
+                id: id
+            }, function(resp) {
+                var html = '';
+                html += '<div class="fl" id="headLogo" style="background-image: url(' + resp.data.logo + ')"></div><p class="headtext">' + resp.data.name + '</p>'
+                    // document.getElementsByClassName("logo")[0].innerHTML = html;
+                document.getElementById("logo").innerHTML = html;
+            })
+
+            $.get('/api/menu/Belongid', {
+                Belongid: id
+            }, function(resp) {
+                if (resp.code == 200) {
+                    var html = "";
+                    for (var i = 0; i < resp.data.length; i++) {
+                        var t = '<li><div class="cooklogo fl" style="background-image: url(';
+                        t += resp.data[i].logo + ')"></div>菜名：<input type="text" class="cookname" value="'+resp.data[i].sellname+'"><br> 价格：<input type="number" class="price" value="'+resp.data[i].price+'">元<p> <a href="">修改</a></p><p><a href="javascript:del('+resp.data[i].id+')">删除</a></p></li>'
+                        html += t;
+                    }
+                    document.getElementsByClassName("menu")[0].innerHTML = html;
+                } else {
+                    alert(resp.msg)
+                }
+            })
+        }
+        function del(id) {
+            console.log("删除", id)
+            $.post(`/api/menu/del`, {
+                kid: id
+            }, function(resp) {
+                alert(resp)
+                if (resp.code == 200) {
+                    init();
+                } else {
+                    alert(resp.msg)
+                }
+            })
+        }
+        init();
+    </script>
+</body>
+
+</html>

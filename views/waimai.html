@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>加入我们</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/waimai.css" />
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+
+    <div class="head">师大食堂外卖
+        <ul class="fr">
+            <li>
+                <a href="/index">首页</a>
+            </li>
+            <li>
+                <a href="/joinin">我要入驻</a>
+            </li>
+            <li>
+                <a href="/waimai">点外卖</a>
+            </li>
+            <li>
+                <a href="/rider">我要送餐</a>
+            </li>
+            <li><a href="/userlogin">登录</a></li>
+        </ul>
+    </div>
+    <div class="body">
+        <select class="choose">
+            <option value="华凤一期">华凤一期</option>
+            <option value="华凤二期">华凤二期</option>
+			<option value="北湖校区">北湖校区</option>
+        </select>
+        <button onclick="init()">搜</button>
+        <div class="search">
+            <input type="text" value="" id="search">
+            <button onclick="search()" id="searchsub">搜索</button>
+        </div>
+
+        <ul class="wid100" id="rest">
+            <!-- <li class="box wid33 fl">
+                <div class="shop" style="background: url(../static/images/img11.jpg)"></div>
+                <p>重庆小面</p>
+            </li> -->
+        </ul>
+    </div>
+
+    <script src="/static/js/jquery.js"></script>
+    <script>
+        function init() {
+            $.get('/api/seller/adress', {
+                adress: $(".choose").val()
+            }, function(resp) {
+                console.log(resp);
+                if (resp.code == 200) {
+                    var html = "";
+                    for (var i = 0; i < resp.data.length; i++) {
+                        var t = '<li class="box wid33 fl"><a href="/waimaimenu?kid=' + resp.data[i].id + '"><div class="shop" style="background-image:url(';
+                        t += resp.data[i].logo + ')"></div><p>' + resp.data[i].name + '</p></a></li>'
+                        html += t;
+                    }
+                    document.getElementById("rest").innerHTML = html;
+                } else {
+                    alert(resp.msg)
+                }
+            })
+        }
+        init()
+    </script>
+
+</body>
+
+
+</html>

@@ -1,0 +1,122 @@
+.head ul li:nth-of-type(3) {
+    border-bottom: 5px solid;
+    border-bottom-color: rgb(91, 175, 84);
+}
+
+
+/*搜索框，选择校区*/
+
+#search,
+#searchsub,
+.choose {
+    height: 50px;
+    font-size: 30px;
+    background: rgba(200, 200, 50, 0.5);
+    line-height: 40px;
+}
+
+#search {
+    background-color: whitesmoke;
+    outline: none;
+    width: 400px;
+    border: 1px solid rgb(223, 235, 213);
+    color: black;
+}
+
+#searchsub {
+    background-color: rgb(223, 235, 213);
+    outline: none;
+}
+
+.box {
+    height: 300px;
+}
+
+.box .shop {
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 80%;
+    height: 80%;
+    margin: 0 auto;
+}
+
+.box p {
+    font-family: "楷体";
+    font-size: 30px;
+    width: 100%;
+    text-align: center;
+}
+
+
+/* 菜单 */
+
+#logo {
+    height: 150px;
+    width: 100%;
+    background-color: white;
+    width: 70%;
+    margin-left: 20%;
+}
+
+#logo #headLogo {
+    height: 100%;
+    width: 150px;
+    border: 1px solid black;
+    border-radius: 50%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin-left: 33px
+}
+
+#logo .headtext {
+    font-size: 40px;
+    font-family: "楷体";
+    line-height: 80px;
+}
+
+.menu {
+    display: block;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.menu li {
+    border: 1px dashed rgb(220, 248, 220);
+    width: 25%;
+    height: 200px;
+    background-color: white;
+}
+
+body {
+    background-color: rgb(239, 244, 250);
+}
+
+.menu .cooklogo {
+    width: 75%;
+    height: 75%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    margin: 0 auto;
+}
+
+.menu p {
+    margin-left: 33px;
+    font-size: 15px;
+}
+
+.menu .cookname {
+    font-weight: bold;
+}
+
+.menu .price {
+    margin-top: 5px;
+    color: red;
+}
+
+.menu .get {
+    font-weight: bold;
+    margin-right: 33px;
+    font-size: 25px;
+    cursor: pointer;
+    color: rgb(255, 123, 0)
+}

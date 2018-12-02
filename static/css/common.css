@@ -1,0 +1,125 @@
+/*常用效果*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    /* Firefox */
+    -webkit-box-sizing: border-box;
+    /* Safari */
+    font-size: 12px;
+    color: #666;
+}
+
+.wid10 {
+    width: 10%;
+}
+
+.wid20 {
+    width: 20%;
+}
+
+.wid30 {
+    width: 30%;
+}
+
+.wid40 {
+    width: 40%;
+}
+
+.wid50 {
+    width: 50%;
+}
+
+.wid60 {
+    width: 60%;
+}
+
+.wid70 {
+    width: 70%;
+}
+
+.wid80 {
+    width: 80%;
+}
+
+.wid90 {
+    width: 90%;
+}
+
+.wid100 {
+    width: 100%;
+}
+
+.wid25 {
+    width: 25%;
+}
+
+.wid33 {
+    width: 33.33333333333333333%;
+}
+
+li {
+    list-style: none;
+}
+
+body {
+    min-width: 1920px;
+}
+
+a {
+    text-decoration: none;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clear-float::after,
+.clear-float::before {
+    content: "";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
+
+
+/*所有界面使用的头*/
+
+.head {
+    height: 100px;
+    font-size: 50px;
+    line-height: 70px;
+    text-shadow: 5px 5px 5px rgb(91, 175, 84);
+    font-family: "楷体";
+    background-color: rgb(223, 235, 213)
+}
+
+.head ul li {
+    display: inline-block;
+    margin-right: 25px;
+    margin-left: 25px;
+}
+
+.head ul li a {
+    font-size: 30px;
+    font-family: "楷体";
+}
+
+.head ul li:nth-child(4) {
+    margin-right: 600px;
+}
+
+.head ul li:nth-child(4):hover,
+.head ul li:nth-child(3):hover,
+.head ul li:nth-child(2):hover,
+.head ul li:nth-child(1):hover {
+    border-bottom: 5px solid;
+    border-bottom-color: rgb(91, 175, 84);
+}

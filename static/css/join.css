@@ -1,0 +1,39 @@
+.head ul li:nth-of-type(2) {
+    border-bottom: 5px solid;
+    border-bottom-color: rgb(91, 175, 84);
+}
+
+body {
+    background-color: rgb(210, 234, 238);
+}
+
+.body {
+    background-image: url(../images/img06.jpg);
+    height: 800px;
+    width: 80%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+}
+
+.load,
+.create {
+    width: 200px;
+    height: 50px;
+    float: left;
+    background-color: aqua;
+    line-height: 50px;
+    text-align: center;
+    margin-left: 150px;
+    position: relative;
+    top: -30px;
+}
+
+.load a,
+.create a {
+    font-size: 30px;
+}
+
+.load {
+    margin-left: 35%;
+}

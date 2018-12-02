@@ -1,0 +1,41 @@
+.head ul li:nth-of-type(4) {
+    border-bottom: 5px solid;
+    border-bottom-color: rgb(91, 175, 84);
+}
+
+.body {
+    width: 60%;
+    height: 150px;
+    margin: 0 auto;
+    margin-top: 600px;
+}
+
+.body .body1,
+.body .body2,
+.body .body3 {
+    float: left;
+    width: 25%;
+    height: 100%;
+    margin-right: 8%;
+}
+
+.body a {
+    font-size: 3em;
+    color: rgb(29, 29, 28);
+    display: block;
+    width: 100%;
+    text-align: center;
+    line-height: 150px;
+}
+
+.body .body1 {
+    background-color: rgb(187, 216, 165);
+}
+
+.body .body2 {
+    background-color: rgb(187, 216, 165);
+}
+
+.body .body3 {
+    background-color: rgb(187, 216, 165);
+}

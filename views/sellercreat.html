@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>create a counter</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<style>
+    .container {
+        width: 40%;
+        margin-left: 600px;
+        margin-top: 300px;
+        border: 1px solid rgb(204, 200, 200);
+        padding: 20px;
+    }
+    
+    input {
+        line-height: 30px;
+        margin: 5px;
+        width: 300px;
+    }
+    
+    button {
+        width: 100px;
+        font-size: 20px;
+        margin-top: 10px;
+        margin-left: 5px;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <h2>创建一个账户</h2>
+        <input type="text" id="name" placeholder="姓名"><br>
+        <input type="text" id="telphone" placeholder="手机号"><br>
+        <input type="password" id="password" placeholder="密码"><br>
+        <input type="text" id="logo" value="../sellerimg/重庆小面/logo.jpg" placeholder="头像"><br>
+        <input type="text" id="adress" placeholder="地址"><br>
+        <button onclick="add()">注册</button>
+    </div>
+
+
+    <script src="../static/js/jquery.js"></script>
+    <script>
+        function add() {
+            var name = $("#name").val();
+            var telphone = $("#telphone").val();
+            var password = $("#password").val();
+            var logo = $("#logo").val();
+            var adress = $("#adress").val();
+
+            $.get(`/api/seller/creat`, {
+                kname: name,
+                ktelphone: telphone,
+                kpassword: password,
+                klogo: logo,
+                kadress: adress
+            }, function(resp) {})
+        }
+    </script>
+</body>
+
+</html>

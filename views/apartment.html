@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>加入我们</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/waimai.css" />
+    <style type="text/css">
+
+    </style>
+</head>
+
+<body>
+    <div class="head">师大食堂外卖
+        <ul class="fr">
+            <li>
+                <a href="/index">首页</a>
+            </li>
+            <li>
+                <a href="/joinin">我要入驻</a>
+            </li>
+            <li>
+                <a href="/waimai">点外卖</a>
+            </li>
+            <li>
+                <a href="/rider">我要送餐</a>
+            </li>
+            <li><a href="/userlogin">登录</a></li>
+        </ul>
+    </div>
+    <div style="font-size: 30px;color: aquamarine">公寓送餐</div>
+    <div id="ctn"></div>
+
+    <script src="/static/js/jquery.js"></script>
+    <script>
+        function init() {
+            $.get(`/api/rider/apartment`, {}, function(resp) {
+                console.log("lk");
+                console.log(resp.data);
+
+                var html = '';
+                for (var i = 0; i < resp.data; i++) {
+                    var t = '<li>' + resp.data[i].adress + '</li><button onclick="order()">接单</button>';
+                    html += t;
+                }
+                document.getElementById("ctn").innerHTML = html;
+            })
+        }
+        init()
+
+        function order() {
+
+        }
+    </script>
+</body>
+
+</html>

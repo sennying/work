@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>师大食堂外卖</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/common.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/index.css" />
+    <link rel="stylesheet" type="text/css" href="/static/layui/css/layui.css" />
+    <script src="/static/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+
+    <style>
+        .lb {
+            background-size: 80% 80%;
+            background-repeat: no-repeat;
+            background-position: center;
+            font-size: 25px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="head">师大食堂外卖
+        <ul class="fr">
+            <li><a href="/index.html">首页</a></li>
+            <li><a href="/joinin">我要入驻</a></li>
+            <li><a href="/waimai">点外卖</a></li>
+            <li><a href="/rider">我要送餐</a></li>
+            <li><a href="/userlogin">登录</a></li>
+        </ul>
+    </div>
+
+
+    <div class="layui-carousel" id="test1">
+        <div carousel-item>
+            <div class="lb" style="background-image: url(static/images/1.jpg)">在寝室做项目没时间吃饭？想吃外卖太贵还担心卫生？师大食堂外卖，让你在寝室就能吃到食堂的便宜安全又可口的饭菜！</div>
+            <div class="lb" style="background-image: url(static/images/2.jpg)">嫌食堂太挤，在食堂找不到座位？师大食堂外卖，把饭菜带回寝室</div>
+            <div class="lb" style="background-image: url(static/images/3.png)">想勤工俭学？想轻松不浪费学习时间？想吃完午饭就能把午饭钱挣回来？师大食堂给你这个机会，做我们的“小骑手”！你就能实现你的梦想</div>
+            <div class="lb" style="background-image: url(static/images/4.jpg)">一下子给几十个几百个学生打饭太累来不及？想要早早的为学生们打完饭自己也能早早吃到热乎乎的饭菜？想要获取更高的利益，加入食堂外卖，让你在学生面前更受欢迎</div>
+            <div class="lb" style="background-image: url(static/images/5.jpg)">条目5</div>
+        </div>
+    </div>
+
+
+    <div class="app fl">
+        <div class="img">假装自己是个二维码</div>
+        <div class="mess">下载手机app</div>
+    </div>
+
+    <div class="wx fr">
+        <div class="img">假装自己是个二维码</div>
+        <div class="mess">食堂外卖小程序</div>
+    </div>
+
+
+</body>
+<script>
+    layui.use('carousel', function() {
+        var carousel = layui.carousel;
+        //建造实例
+        carousel.render({
+            elem: '#test1',
+            width: '85%' //设置容器宽度
+                ,
+            arrow: 'always' //始终显示箭头
+                ,
+            height: "750px"
+                //,anim: 'updown' //切换动画方式
+        });
+    });
+</script>
+
+</html>

@@ -1,0 +1,172 @@
+* {
+    padding: 0;
+    margin: 0;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+body {
+    background: url(../../static/images/user1.jpg) no-repeat;
+    background-size: 100% 100%;
+}
+
+ul,
+li {
+    list-style-type: none;
+}
+
+a,
+a:link,
+a:active,
+a:visited {
+    text-decoration: none;
+    color: #303030;
+}
+
+.login .l_m .login_box .cook a {
+    color: #666;
+}
+
+a:hover {
+    color: #0dbba1
+}
+
+.login .l_m .login_box li {
+    margin-top: 20px;
+}
+
+.blank20 {
+    height: 236px;
+}
+
+.clear {
+    clear: both;
+}
+
+.clearfix {
+    display: block;
+}
+
+.mainbox {
+    width: 1180px;
+    margin: auto;
+}
+
+.login .title {
+    height: 62px;
+    line-height: 62px;
+    font-size: 22px;
+    padding-left: 320px;
+}
+
+.login .l_m {
+    width: 458px;
+    float: left;
+    border: 1px solid #eee;
+    padding: 20px 20px 40px 20px;
+    margin-left: 320px;
+    /* 整个盒子的最小高度 */
+    min-height: 387px;
+    background: #fff;
+}
+
+.login .l_m .login_box {
+    margin: 40px 20px 0px 20px;
+}
+
+.login .l_m .login_box .username,
+.login .l_m .login_box .password {
+    padding: 0px 10px 0px 40px;
+    width: 280px;
+    vertical-align: middle;
+    height: 42px;
+    border: 0;
+    outline: none;
+    font-size: 14px;
+    color: #999;
+    letter-spacing: 1px;
+    border: #ddd solid 1px;
+    border-radius: 0px;
+}
+
+.righta {
+    margin-left: 20px;
+}
+
+.fl {
+    float: left;
+}
+
+.login .l_m .login_box .cook {
+    color: #666;
+    height: 34px;
+    line-height: 34px;
+    font-size: 14px;
+}
+
+.login .l_m .login_box .cook #Cookies:checked {
+    background: url(../images/radio_19.png) no-repeat;
+}
+
+.login .l_m .login_box .cook #Cookies {
+    -webkit-appearance: none;
+    width: 19px;
+    height: 19px;
+    background: url(../images/radio_19.png) no-repeat 0px -21px;
+    margin: 8px 5px 0px 0px;
+    float: left;
+    cursor: pointer;
+    outline: none;
+}
+
+.btn-login {
+    width: 358px;
+    height: 46px;
+    -webkit-transition: 0.3s;
+    transition: 0.3s;
+    line-height: 46px;
+    cursor: pointer;
+    background: #72f59d;
+    border: 0px;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    border-radius: 3px;
+}
+
+.login .rightBox span {
+    font-size: 19px;
+    display: block;
+    height: 39px;
+    line-height: 39px;
+    color: #606060;
+}
+
+.login .rightBox a {
+    width: 130px;
+    height: 36px;
+    line-height: 36px;
+    display: block;
+    border: 1px solid #0DBBA1;
+    text-align: center;
+    color: #0DBBA1;
+    font-size: 16px;
+    margin-top: 20px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.footer-bottom {
+    padding: 15px 0 30px;
+    margin-top: 30px;
+    background: rgb(145, 241, 221);
+    text-align: center;
+    line-height: 30px;
+    color: #fff;
+}
+
+.footer {
+    width: 100%;
+    background: #666;
+    bottom: 10px;
+}
