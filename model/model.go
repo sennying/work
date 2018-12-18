@@ -12,7 +12,7 @@ var DB *sqlx.DB
 func init() {
 	var err error
 	fmt.Println("hello")
-	DB, err = sqlx.Open(`mysql`, `root:root@tcp(127.0.0.1:3306)/messoutbuy?charset=utf8&parseTime=true`)
+	DB, err = sqlx.Open(`mysql`, `lkyz:18281578834lk!@tcp(45.40.203.75:3306)/messoutbuy?charset=utf8&parseTime=true`)
 	if err != nil {
 		panic("连接错误")
 	} else {
@@ -54,6 +54,15 @@ type Carte struct {
 	Callnum string `json:"callnum" form:"callnum"`
 	Adress  string `json:"adress" form:"adress"`
 	Flag    int    `json:"flag" form:"flag"`
+	Rp      int    `json:"rp" form:"rp"`
+}
+
+type Minedan struct {
+	Id     int    `json:"id" form:"id"`
+	Name   string `json:"name" form:"name"`
+	Ctime  string `json:"ctime" form:"ctime"`
+	Food   string `json:"food" form:"food"`
+	Adress string `json:"adress" form:"adress"`
 }
 
 func SellerAll() ([]Seller, error) {
@@ -64,6 +73,7 @@ func SellerAll() ([]Seller, error) {
 func SellerAdress(adress string) ([]Seller, error) {
 	mods := make([]Seller, 0)
 	err := DB.Select(&mods, "SELECT * FROM `seller` WHERE adress=?", adress)
+	fmt.Println(err)
 	return mods, err
 }
 func SellerId(id int) (Seller, error) {
@@ -105,9 +115,8 @@ func UserAdd(name, callnum, callpass, logo string, age int) bool {
 	DB.Exec("INSERT INTO `user` (`name`,`callnum`,`callpass`,`logo`,`age`) VALUES (?,?,?,?,?)", name, callnum, callpass, logo, age)
 	return true
 }
-func SellerAdd(name, telphone, password, logo, adress string) bool {
-	fmt.Println(adress)
-	DB.Exec("INSERT INTO `seller` (`name`,`telphone`,`password`,`logo`,`adress`) VALUES (?,?,?,?,?)", name, telphone, password, logo, adress)
+func SellerAdd(name, telphone, password, adress string) bool {
+	DB.Exec("INSERT INTO `seller` (`name`,`telphone`,`password`,`adress`) VALUES (?,?,?,?)", name, telphone, password, adress)
 	return true
 }
 
@@ -117,8 +126,18 @@ func Apartment() ([]Carte, error) {
 	err := DB.Select(&mods, "SELECT * FROM `carte` where flag=1")
 	return mods, err
 }
+
 func Outdoor() ([]Carte, error) {
 	mods := make([]Carte, 0)
 	err := DB.Select(&mods, "SELECT * FROM `carte` where flag=2")
+	return mods, err
+}
+
+//1217
+func Usermine(name string) ([]Minedan, error) {
+	fmt.Println(name)
+	mods := make([]Minedan, 0)
+	err := DB.Select(&mods, "SELECT * FROM `minedan` where name=?", name)
+	fmt.Println(err)
 	return mods, err
 }

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .img1 {
+            width: 300px;
+            height: auto;
+        }
+        
+        .img1 img {
+            width: 100%;
+        }
+        
+        .img1:hover {
+            cursor: crosshair;
+            /*光标呈现十字线*/
+        }
+        
+        .img2 {
+            margin-top: 20px;
+            width: 300px;
+            height: 300px;
+            background: url("cat.jpg");
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .ten {
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.5);
+            position: absolute;
+            display: block;
+            z-index: 1;
+            /*让元素实体"虚化"，鼠标可以穿透div*/
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--第一个div用来放图片,采用<img src="xxx.xxx">的形式-->
+    <div class="img1">
+        <img src="static/images/3.png">
+    </div>
+
+    <!--第二个div用来放放大后的图片，采用background的形式-->
+    <div class="img2"></div>
+
+    <!--十字框框-->
+    <div class="ten"></div>
+
+</body>
+<script src="jquery-3.1.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+        //1. 获取图片的宽和高
+        var width = $(".img1").width();
+        var height = $(".img1").height();
+        //2. 鼠标移动事件
+        $(".img1").mousemove(function(e) {
+            //3. 获取鼠标的位置
+            x = e.pageX;
+            y = e.pageY;
+            //4. 计算鼠标相对图片所在的百分比
+            var xPercent = 100 * x / width;
+            var yPercent = 100 * y / height;
+            //5. 改变第二个div内背景显示的位置
+            $(".img2").css("background-position", xPercent + "% " + yPercent + "%");
+            //6. 改变十字框框的位置
+            $(".ten").css({
+                "top": (y - 40) + "px",
+                "left": (x - 40) + "px"
+            });
+        });
+        //img1得hover事件  当鼠标移入.img1时显示十字框框，移出时隐藏十字框框
+        $(".img1").hover(function() {
+            $(".ten").css({
+                "display": "block"
+            });
+        }, function() {
+            $(".ten").css({
+                "display": "none"
+            });
+        })
+    });
+</script>
+
+</html>

@@ -2,12 +2,12 @@ package control
 
 import (
 	"encoding/json"
-	"engineering1/model"
-	"engineering1/util"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 	"strconv"
+	"work/model"
+	"work/util"
 )
 
 func IndexView(w http.ResponseWriter, r *http.Request) {
@@ -43,6 +43,7 @@ func SellerAdress(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	adress := r.FormValue("adress")
 	mods, _ := model.SellerAdress(adress)
+	fmt.Println(adress)
 	buf := util.NewResult(200, "查询成功", mods)
 	w.Write(buf)
 }
@@ -142,11 +143,10 @@ func Selleradd(w http.ResponseWriter, r *http.Request) {
 	}
 	telphone := r.FormValue("ktelphone")
 	password := r.FormValue("kpassword")
-	logo := r.FormValue("klogo")
+	// logo := r.FormValue("klogo")
 	adress := r.FormValue("kadress")
-
-	ok := model.SellerAdd(name, telphone, password, logo, adress)
-
+	ok := model.SellerAdd(name, telphone, password, adress)
+	fmt.Print(ok)
 	if ok {
 		w.Write([]byte(`添加成功`))
 	} else {
@@ -175,6 +175,7 @@ func SellerPhone(w http.ResponseWriter, r *http.Request) {
 func Apartment(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	mod, _ := model.Apartment()
+	fmt.Println(mod)
 	buf, _ := json.Marshal(mod)
 	w.Header().Set("Content-Type", "application/json")
 	w.Write(buf)
@@ -192,5 +193,25 @@ func ApartmentView(w http.ResponseWriter, r *http.Request) {
 }
 func OutdoorView(w http.ResponseWriter, r *http.Request) {
 	buf, _ := ioutil.ReadFile("views/outdoor.html")
+	w.Write(buf)
+}
+
+// //1211
+// func Information(w http.ResponseWriter, r *http.Request) {
+// 	buf, _ := ioutil.ReadFile("views/mine.html")
+// 	w.Write(buf)
+// } //user
+func UserZone(w http.ResponseWriter, r *http.Request) {
+	buf, _ := ioutil.ReadFile("views/selfzone.html")
+	w.Write(buf)
+}
+
+//1217
+func Usermine(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	name := r.FormValue("name")
+	mod, _ := model.Usermine(name)
+	buf, _ := json.Marshal(mod)
+	w.Header().Set("Content-Type", "application/json")
 	w.Write(buf)
 }

@@ -1,0 +1,69 @@
+body {
+    background-color: aliceblue
+}
+
+#BigBody {
+    margin: 0 auto;
+    width: 50%;
+    background-color: rgb(240, 250, 250)
+}
+
+#title {
+    font-size: 30px;
+    margin-bottom: 45px;
+}
+
+#head {
+    height: 150px;
+    border: 1px solid white;
+    margin-bottom: 45px;
+}
+
+#head #headlogo {
+    height: 100%;
+    width: 150px;
+    margin-right: 50px;
+    float: left;
+}
+
+#head #ZX,
+#head #name {
+    font-size: 23px;
+    margin-bottom: 30px;
+}
+
+#nag {
+    float: left;
+    width: 18%;
+    margin-right: 12px;
+    border: 1px solid rgb(184, 181, 173);
+}
+
+#nag a {
+    width: 100%;
+    display: block;
+}
+
+#nag a:nth-of-type(1),
+#nag a:nth-of-type(4),
+#nag a:nth-of-type(7) {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgb(202, 235, 176);
+}
+
+#nag a {
+    font-size: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.ulli1 {
+    background-color: red;
+}
+
+.rdiv {
+    float: left;
+    width: 80%;
+    border: 1px solid rgb(184, 181, 173);
+}

@@ -53,7 +53,7 @@
                         </li>
                         <li>
                             <!-- <input value="立即登录" class="btn-login" id="btn_login"> -->
-                            <button value="立即登录" class="btn-login" onclick="search()" id="btn_login"><a href="javascript:;">立即登陆</a></button>
+                            <button value="立即登录" class="btn-login" onclick="search()" id="btn_login">立即登陆</button>
                         </li>
                     </ul>
                 </div>
@@ -81,7 +81,6 @@
             }, function(resp) {
                 if (resp.telphone == $("#telphone").val() && resp.password == $("#password").val()) {
                     console.log("lk");
-
                     open("/sellerManage?kid=" + resp.id)
 
                 } else {

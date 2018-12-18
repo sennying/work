@@ -10,12 +10,18 @@
 </head>
 
 <style>
+    body {
+        background: url(../static/images/creat.jpg) no-repeat;
+        background-size: 100% 100%;
+    }
+    
     .container {
-        width: 40%;
-        margin-left: 600px;
+        width: 30%;
+        margin-left: 700px;
         margin-top: 300px;
         border: 1px solid rgb(204, 200, 200);
         padding: 20px;
+        margin-bottom: 403px;
     }
     
     input {
@@ -38,7 +44,7 @@
         <input type="text" id="name" placeholder="姓名"><br>
         <input type="text" id="callnum" placeholder="手机号"><br>
         <input type="password" id="callpass" placeholder="密码"><br>
-        <input type="text" id="logo" value="/res/img/logo.jpg" placeholder="头像"><br>
+        <!-- <input type="text" id="logo" value="/res/img/logo.jpg" placeholder="头像"><br> -->
         <input type="number" id="age" placeholder="年龄"><br>
         <button onclick="add()">注册</button>
     </div>
@@ -50,16 +56,18 @@
             var name = $("#name").val();
             var callnum = $("#callnum").val();
             var callpass = $("#callpass").val();
-            var logo = $("#logo").val();
+            // var logo = $("#logo").val();
             var age = $("#age").val();
 
             $.get(`/api/user/creat`, {
                 kname: name,
                 kcallnum: callnum,
                 kcallpass: callpass,
-                klogo: logo,
+                // klogo: logo,
                 kage: age
-            }, function(resp) {})
+            }, function(resp) {
+                alert("创建账号成功！")
+            })
         }
     </script>
 </body>

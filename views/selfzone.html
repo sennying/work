@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>师大食堂外卖</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/common.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/static/css/selfzone.css" />
+    <link rel="stylesheet" type="text/css" href="/static/layui/css/layui.css" />
+    <script src="/static/layui/layui.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../static/lib/vue.js"></script>
+    <script src="../static/lib/vue-router.js"></script>
+    <script src="../static/lib/vue-resource.js"></script>
+</head>
+
+<body>
+    <div class="head">师大食堂外卖
+        <ul class="fr">
+            <li><a href="/index.html">首页</a></li>
+            <li><a href="/joinin">我要入驻</a></li>
+            <li><a href="/waimai">点外卖</a></li>
+            <li><a href="/rider">我要送餐</a></li>
+            <li><a href="/userlogin">登录</a></li>
+        </ul>
+    </div>
+    <div id="app">
+        <div id="BigBody">
+            <div id="title">
+                刘康的个人中心
+            </div>
+            <!-- 头像 -->
+            <div id="head">
+                <img src="../static/images/touxiang.jpeg" alt="" id="headlogo">
+                <div id="name">杨珍</div>
+                <div id="ZX">注销</div>
+            </div>
+
+            <div class="ful">
+                <ul id="nag">
+                    <router-link to="/wddd">管理中心</router-link>
+                    <router-link to="/wddd">我的订单</router-link>
+                    <router-link to="/wdjd">我的接单</router-link>
+                    <!-- <li>管理中心</li>
+                    <li>我的订单</li>
+                    <li>我的接单</li> -->
+
+                    <router-link to="/">个人信息</router-link>
+                    <router-link to="/xggrxx">修改个人信息</router-link>
+                    <router-link to="/xgtx">修改头像</router-link>
+                    <!-- 
+                    <li>个人信息</li>
+                    <li>修改个人信息</li>
+                    <li>修改头像</li> -->
+
+                    <router-link to="/">财务管理</router-link>
+                    <router-link to="/zxcz">在线充值</router-link>
+                    <router-link to="/zfjl">支付记录</router-link>
+                    <!-- <li>财务管理</li>
+                    <li>在线充值</li>
+                    <li>支付记录</li> -->
+                </ul>
+            </div>
+            <div class="rdiv">
+                <router-view></router-view>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var routes = [{
+            path: '/wddd',
+            component: {
+                template: `<div>
+                <ul>
+                <li v-bind:class="ulli1">全部订单</li>
+                <li>待付款</li>
+                <li>待评价</li>
+                </ul>
+                <div></div>
+                </div>`,
+            },
+        }, {
+            path: '/wddd',
+            component: {
+                template: `<div>
+                <h1>你还是号</h1>
+                </div>`,
+            },
+
+        }];
+        var router = new VueRouter({
+            routes: routes,
+        });
+        var app = new Vue({
+            el: '#app',
+            router: router,
+            data: {},
+            methods: {
+                getInfo() {
+                    var name = document.getElementById("name").innerHTML
+                    console.log(name)
+                    this.$http.post(`/api/infor/mine`, {
+                        name: name
+                    }, {
+                        emulateJSON: true
+                    }).then(resp => {
+                        console.log(resp)
+                    })
+                }
+            },
+
+        });
+        app.getInfo()
+    </script>
+</body>
+
+</html>

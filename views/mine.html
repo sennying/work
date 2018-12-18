@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>我的信息</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../static/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/join.css" />
+</head>
+<style>
+    #ctn {
+        width: 60%;
+        margin: 0 auto;
+    }
+    
+    #head {
+        margin: 10px 0px;
+        height: 160px;
+    }
+    
+    #header {
+        border-radius: 50% 50%;
+        background: url(../static/images/3.png) no-repeat;
+        background-size: 100% 100%;
+        width: 15%;
+        height: 160px;
+    }
+    
+    #text {
+        border: 1px solid rgb(82, 30, 224);
+        width: 100%;
+    }
+    
+    #text #menu {
+        width: 15%;
+        float: left;
+        border: 1px solid gray;
+    }
+    
+    #text #content {
+        width: 80%;
+        float: left;
+        border: 1px solid red
+    }
+</style>
+
+<body>
+    <div class="head">师大食堂外卖
+        <ul class="fr">
+            <li>
+                <a href="/index">首页</a>
+            </li>
+            <li>
+                <a href="/joinin">我要入驻</a>
+            </li>
+            <li>
+                <a href="/waimai">点外卖</a>
+            </li>
+            <li>
+                <a href="/rider">我要送餐</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- 中心内容 -->
+    <div id="ctn">
+        <div id="head">
+            <h4 style="float:right;font-size: 30px;">昵称</h4>
+            <div id="header">
+            </div>
+        </div>
+        <div id="text">
+            <div id="menu">
+                <router-link to="/a" style="font-size: 20px;display: block;">我的信息中心</router-link>
+                <router-link to="/" style="font-size: 20px;display: block; ">首页</router-link>
+                <router-link to="/user" style="font-size: 20px;display: block;">接单管理</router-link>
+                <router-link to="/post" style="font-size: 20px;display: block;">订单管理</router-link>
+            </div>
+
+
+            <div id="content ">
+                <router-view name="content" style="display: block"></router-view>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

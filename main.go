@@ -1,9 +1,9 @@
 package main
 
 import (
-	"engineering1/control"
 	"fmt"
 	"net/http"
+	"work/control"
 )
 
 func mid(next http.Handler) http.Handler {
@@ -66,7 +66,7 @@ func main() {
 	//添加商家
 	http.Handle(`/api/seller/creat`, mid(http.HandlerFunc(control.Selleradd)))
 
-	//
+	//1203
 	http.Handle(`/api/rider/apartment`, mid(http.HandlerFunc(control.Apartment)))
 	http.Handle(`/api/rider/outdoor`, mid(http.HandlerFunc(control.Outdoor)))
 
@@ -76,7 +76,10 @@ func main() {
 	//属于商家查询商品
 	http.Handle(`/api/menu/Belongid`, mid(http.HandlerFunc(control.MenuBelongid)))
 
+	//用户个人中心
+	http.HandleFunc(`/userzone`, control.UserZone)
+	http.Handle(`/api/infor/mine`, mid(http.HandlerFunc(control.Usermine)))
+
 	fmt.Println("hello")
 	http.ListenAndServe(":8080", nil)
-
 }

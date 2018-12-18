@@ -6,8 +6,43 @@
     <title>加入我们</title>
     <link rel="stylesheet" type="text/css" href="../static/css/common.css" />
     <link rel="stylesheet" type="text/css" href="../static/css/waimai.css" />
-    <style type="text/css">
 
+    <style type="text/css">
+        body {
+            background-color: white;
+            /* background: url(../static/images/apart.jpg) no-repeat;
+            background-size: 100% 100%; */
+        }
+        
+        #ctn {
+            width: 80%;
+            margin: 0 auto;
+        }
+        
+        #ctn .box {
+            background-color: rgb(242, 250, 229);
+            width: 22%;
+            height: 450px;
+            margin: 20px;
+            float: left;
+            font-size: 26px;
+            font-size: '黑体';
+            overflow: scroll;
+        }
+        
+        #ctn div li {
+            display: block;
+            margin-top: 10px;
+            background-color: rgb(251, 255, 214);
+            font-size: 0.6em;
+            padding-left: 10px;
+            margin: 1px 0;
+            line-height: 27px;
+        }
+        
+        #ctn div li:hover {
+            background-color: rgb(133, 245, 208);
+        }
     </style>
 </head>
 
@@ -29,28 +64,111 @@
             <li><a href="/userlogin">登录</a></li>
         </ul>
     </div>
-    <div style="font-size: 30px;color: aquamarine">公寓送餐</div>
-    <div id="ctn"></div>
+
+    <div id="ctn">
+        <div id="head" style="font-size: 30px;color: rgb(85, 235, 185)" v-cloark>----- {{msg}} -----</div>
+        <div class="box" id="room13">
+        </div>
+
+        <div class="box" id="room14">
+        </div>
+
+        <div class="box" id="room15">
+        </div>
+
+        <div class="box" id="room16">
+        </div>
+
+        <div class="box" id="room17">
+        </div>
+
+        <div class="box" id="room18">
+        </div>
+
+        <div class="box" id="room19">
+        </div>
+
+        <div class="box" id="room20">
+        </div>
+
+    </div>
 
     <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/vue.min.js"></script>
     <script>
+        var vm = new Vue({
+            el: '#head',
+            data: {
+                msg: "公寓送餐啦 !!!!  "
+            },
+            methods: {
+                lang() {
+                    setInterval(() => {
+                        var start = this.msg.substring(0, 1);
+                        var end = this.msg.substring(1);
+                        this.msg = end + start;
+                    }, 400);
+                }
+            },
+
+        })
+        vm.lang()
+
         function init() {
             $.get(`/api/rider/apartment`, {}, function(resp) {
                 console.log("lk");
-                console.log(resp.data);
+                var html13 = '';
+                var html14 = '';
+                var html15 = '';
+                var html16 = '';
+                var html17 = '';
+                var html18 = '';
+                var html19 = '';
+                var html20 = '';
+                for (var i = 0; i < resp.length; i++) {
+                    if (resp[i].rp == 13) {
+                        var t = '<li>' + resp[i].adress + '<button onclick="order()" style="margin-left:180px;">接单</button></li>';
+                        html13 += t;
+                    } else if (resp[i].rp == 14) {
 
-                var html = '';
-                for (var i = 0; i < resp.data; i++) {
-                    var t = '<li>' + resp.data[i].adress + '</li><button onclick="order()">接单</button>';
-                    html += t;
+                        var t = '<li>' + resp[i].adress + '<button onclick="order()" style="margin-left:180px;">接单</button></li>';
+                        html14 += t;
+                    } else if (resp[i].rp == 15) {
+                        var t = '<li>' + resp[i].adress + '<button onclick="order()" style="margin-left:180px;">接单</button></li>';
+                        html15 += t;
+                    } else if (resp[i].rp == 16) {
+
+                        var t = '<li>' + resp[i].adress + '<button onclick="order()" style="margin-left:180px;">接单</button></li>';
+                        html16 += t;
+                    } else if (resp[i].rp == 17) {
+
+                        var t = '<li>' + resp[i].adress + '<button onclick="order()" style="margin-left:180px;">接单</button></li>';
+                        html17 += t;
+                    } else if (resp[i].rp == 18) {
+                        var t = '<li>' + resp[i].adress + '<button onclick="order()" style="margin-left:180px;">接单</button></li>';
+                        html18 += t;
+                    } else if (resp[i].rp == 19) {
+                        var t = '<li>' + resp[i].adress + '<button onclick="order()" style="margin-left:180px;">接单</button></li>';
+                        html19 += t;
+                    } else if (resp[i].rp == 20) {
+                        var t = '<li>' + resp[i].adress + '<button onclick="order()" style="margin-left:180px;">接单</button></li>';
+                        html20 += t;
+                    }
+                    document.getElementById("room13").innerHTML = '<img src="../static/images/apartment.png" style="width:40px;">' + '13公寓' + html13;
+                    document.getElementById("room14").innerHTML = '<img src="../static/images/apartment.png" style="width:40px;">' + "14公寓" + html14;
+                    document.getElementById("room15").innerHTML = '<img src="../static/images/apartment.png" style="width:40px;">' + "15公寓" + html15;
+                    document.getElementById("room16").innerHTML = '<img src="../static/images/apartment.png" style="width:40px;">' + "16公寓" + html16;
+                    document.getElementById("room17").innerHTML = '<img src="../static/images/apartment.png" style="width:40px;">' + "17公寓" + html17;
+                    document.getElementById("room18").innerHTML = '<img src="../static/images/apartment.png" style="width:40px;">' + "18公寓" + html18;
+                    document.getElementById("room19").innerHTML = '<img src="../static/images/apartment.png" style="width:40px;">' + "19公寓" + html19;
+                    document.getElementById("room20").innerHTML = '<img src="../static/images/apartment.png" style="width:40px;">' + "20公寓" + html20;
                 }
-                document.getElementById("ctn").innerHTML = html;
             })
         }
         init()
 
         function order() {
-
+            alert("你已经接单,请尽快将食品送往目的地哦 ")
         }
     </script>
 </body>

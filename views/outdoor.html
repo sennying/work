@@ -2,30 +2,145 @@
 <html>
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>outdoor</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="../static/css/menu.css" />
+    <meta charset="UTF-8">
+    <title>加入我们</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/common.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/waimai.css" />
 
+    <style type="text/css">
+        #ctn {
+            width: 80%;
+            margin: 0 auto;
+        }
+        
+        #ctn .box {
+            background-color: rgb(242, 250, 229);
+            width: 22%;
+            height: 450px;
+            margin: 20px;
+            float: left;
+            font-size: 26px;
+            font-size: '黑体';
+            overflow: scroll;
+        }
+        
+        #ctn div li {
+            background-color: rgb(251, 255, 214);
+            font-size: 0.6em;
+            padding-left: 10px;
+            margin: 1px 0;
+            line-height: 27px;
+        }
+        
+        #ctn div li:hover {
+            background-color: rgb(133, 245, 208);
+        }
+    </style>
 </head>
 
 <body>
-    <div id="ctn"></div>
+    <div class="head">师大食堂外卖
+        <ul class="fr">
+            <li>
+                <a href="/index">首页</a>
+            </li>
+            <li>
+                <a href="/joinin">我要入驻</a>
+            </li>
+            <li>
+                <a href="/waimai">点外卖</a>
+            </li>
+            <li>
+                <a href="/rider">我要送餐</a>
+            </li>
+            <li><a href="/userlogin">登录</a></li>
+        </ul>
+    </div>
+
+    <div id="ctn">
+        <div id="head" style="font-size: 30px;color: rgb(85, 235, 185)" v-cloark>----- {{msg}} -----</div>
+        <div class="box" id="A">
+        </div>
+
+        <div class="box" id="B">
+        </div>
+
+        <div class="box" id="C">
+        </div>
+
+        <div class="box" id="D">
+        </div>
+
+        <div class="box" id="other">
+        </div>
+
+    </div>
 
     <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/vue.min.js"></script>
     <script>
-        function init() {
-            $.get(`/api/rider/apartment`, {}, function(resp) {
-                var html = '';
-                for (var i = 0; i < resp.data; i++) {
-                    var t = '<li>' + resp.adress[i] + '</li>';
-                    html += t;
+        var vm = new Vue({
+            el: '#head',
+            data: {
+                msg: "户外送餐啦！！！"
+            },
+            methods: {
+                lang() {
+                    setInterval(() => {
+                        var start = this.msg.substring(0, 1);
+                        var end = this.msg.substring(1);
+                        this.msg = end + start;
+                    }, 400);
                 }
-                document.getElementById("ctn").innerHTML = html;
+            },
+
+        })
+        vm.lang()
+
+        function init() {
+            $.get(`/api/rider/outdoor`, {}, function(resp) {
+                console.log("lk");
+                var htmlA = '';
+                var htmlB = '';
+                var htmlC = '';
+                var htmlD = '';
+                var htmlE = '';
+
+                for (var i = 0; i < resp.length; i++) {
+                    if (resp[i].rp == 33) {
+                        var t = '<li>' + resp[i].adress + '<button onclick="order()" style="margin-left:200px;">接单</button></li>';
+                        htmlA += t;
+                    } else if (resp[i].rp == 44) {
+
+                        var t = '<li>' + resp[i].adress + '<button onclick="order()" style="margin-left:200px;">接单</button></li>';
+                        htmlB += t;
+                    } else if (resp[i].rp == 55) {
+                        var t = '<li>' + resp[i].adress + '<button onclick="order()" style="margin-left:200px;">接单</button></li>';
+                        htmlC += t;
+                    } else if (resp[i].rp == 66) {
+
+                        var t = '<li>' + resp[i].adress + '<button onclick="order()" style="margin-left:200px;">接单</button></li>';
+                        htmlD += t;
+                    } else if (resp[i].rp == 77) {
+
+                        var t = '<li>' + resp[i].adress + '<button onclick="order()" style="margin-left:200px;">接单</button></li>';
+                        htmlE += t;
+                    }
+                    document.getElementById("A").innerHTML = '<img src="../static/images/outdoor.png" style="width:40px;">' + "A栋教学楼" + htmlA;
+                    document.getElementById("B").innerHTML = '<img src="../static/images/outdoor.png" style="width:40px;">' + "B栋教学楼" + htmlB;
+                    document.getElementById("C").innerHTML = '<img src="../static/images/outdoor.png" style="width:40px;">' + "C栋教学楼" + htmlC;
+                    document.getElementById("D").innerHTML = '<img src="../static/images/outdoor.png" style="width:40px;">' + "D栋教学楼" + htmlD;
+                    document.getElementById("other").innerHTML = "其它" + htmlE;
+
+                }
+
             })
         }
         init()
+
+        function order() {
+            alert("你已经接单,请尽快将食品送往目的地 ")
+        }
     </script>
 </body>
 
